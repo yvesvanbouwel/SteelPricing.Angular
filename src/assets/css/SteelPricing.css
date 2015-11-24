@@ -1,0 +1,51 @@
+﻿.filter {
+	margin-bottom: 20px;
+}
+
+.slider-placeholder {
+	margin-bottom: 10px;
+}
+
+.tree {
+    list-style: none;
+    padding: 0;
+}
+
+.tree ul {
+    list-style: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.tree-closed > ul {
+    display: none;
+}
+
+.tree-closed > label, .tree-open > label {
+    cursor: pointer;
+}
+
+.tree-toggle {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.tree-closed > label > .tree-toggle:before {
+    content: "\e081";
+}
+
+.tree-open > label > .tree-toggle:before {
+    content: "\e082";
+}
+
+.tree ul li.checkbox:first-child {
+    margin-top: 0px;
+}

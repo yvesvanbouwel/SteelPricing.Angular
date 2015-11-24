@@ -1,0 +1,24 @@
+<ul class="tree">
+        <li data-ng-repeat="continent in Continents" data-ng-class="determineNodeState(continent)">
+            <input type="checkbox" class="continent" value="{{continent.Id}}" 
+                   data-ng-click="onSelectedContinentChanged(continent)"
+                   data-ng-checked="selectedContinents.indexOf(continent) > -1"  />
+            <label for="region-{{continent.Code}}">
+                <span data-ng-click="toggleNode(continent)">(+)</span>
+                {{determineContinentLabel(continent)}}
+                <span class="tree-count"></span>
+            </label>
+            <ul>
+                <li class="checkbox" 
+                    data-ng-repeat="country in continent.Countries"
+                    data-ng-click="onSelectedCountryChanged(continent, country)">
+                    <span>
+                        <label for="region-{{country.Code}}">
+                            <input type="checkbox" class="country" value="{{country.Id}}" data-continentid="{{continent.Id}}" data-ng-checked="selectedCountries.indexOf(country) > -1" />
+                            {{country.Name}}
+                        </label>
+                    </span>
+                </li>
+            </ul>
+        </li>
+</ul>

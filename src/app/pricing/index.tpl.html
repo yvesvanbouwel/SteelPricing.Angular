@@ -1,0 +1,31 @@
+<div ng-controller="indexController">
+	<div class=" col-lg-3">
+		<pricing-filter data-query='Query' data-results="Results" data-continents="Continents" data-filter="filter"></pricing-filter>
+	</div>
+	<div class="col-lg-9">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Country</th>
+					<th>Year</th>
+					<th>Commodity&nbsp;Code</th>
+					<th>Commodity Name</th>
+					<th>Flow</th>
+					<th>Trade ($)</th>
+					<th>Weigth (kg)</th>  
+				</tr>
+		 	</thead>
+			 <tbody>
+				 <tr ng-repeat="price in Results">
+					 <td>{{price.CountryName}}</td>
+					 <td>{{price.Year}}</td>
+					 <td>{{price.CommodotyCode}}</td>
+					 <td>{{price.CommodityName}}</td>
+					 <td>{{price.Flow}}</td>
+					 <td>{{price.Trade}}</td>
+					 <td>{{price.Weigth}}</td>
+				 </tr>
+			 </tbody>
+		  </table>
+	</div>
+</div>

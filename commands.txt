@@ -1,0 +1,4 @@
+npm view <module_name> versions -> View all available versions of certain module
+npm view <module_name> version  -> Latest available version of certain module
+
+bower install -> install all packages defined in the bower.json file.

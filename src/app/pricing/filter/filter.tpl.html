@@ -1,0 +1,43 @@
+<div>
+    <h3>Filters</h3>
+    <form novalidate>
+        <div class="filter" id="year-filter">
+            <h4 class="filter-title">Year</h4>
+            <div class="filter-content">
+                <div class="slider-placeholder"></div>
+                <div class="row">
+                    <div class="col-xs-6"><input class="form-control" type="text" placeholder="From" data-ng-model="Query.YearFrom" data-ng-change="filter()" integer/></div>
+                    <div class="col-xs-6"><input class="form-control" type="text" placeholder="To"" data-ng-model="Query.YearTo" data-ng-change="filter()" integer/></div>
+        </div>
+        <div class="filter">
+            <h4 class="filter-title">Region</h4>
+            <div class="filter-content">
+                <country-tree data-continents="Continents"></country-tree>
+            </div>
+        </div>
+        <div id="flow-filter" class="filter">
+            <h4 class="filter-title">Flow</h4>
+            <div class="filter-content">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="checkbox"><label for="flow-import"><input type="checkbox" data-ng-model="Query.Import" data-ng-change="toggleFlow(1)">Import</label></div>
+                        <div class="checkbox"><label for="flow-reimport"><input type="checkbox" data-ng-model="Query.ReImport" data-ng-change="toggleFlow(3)">Re-Import</label></div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="checkbox"><label for="flow-export"><input type="checkbox" data-ng-model="Query.Export" data-ng-change="toggleFlow(2)">Export</label></div>
+                        <div class="checkbox"><label for="flow-reexport"><input type="checkbox" data-ng-model="Query.ReExport" data-ng-change="toggleFlow(4)">Re-Export</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter">
+            <h4 class="filter-title">Weigth</h4>
+            <div class="filter-content">
+                <div class="row">
+                    <div class="col-xs-6"><input class="form-control" type="text" placeholder="From" ng-model="Query.WeightFrom" data-ng-change="filter()" integer/></div>
+                    <div class="col-xs-6"><input class="form-control" type="text" placeholder="To" ng-model="Query.WeightTo" data-ng-change="filter()" integer/></div>
+                </div>
+            </div>
+        </div>
+    </from>
+</div>

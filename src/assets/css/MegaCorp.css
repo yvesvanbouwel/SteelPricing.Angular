@@ -1,0 +1,18 @@
+﻿.navbar-brand {
+    background: url(../Images/brand.png) no-repeat left center;
+    width: 221px;
+    text-indent: -9999px;
+}
+
+.navbar .active a {
+    color: #2B3844;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border: 0;
+}
+
+input.small {
+	width: 55px;
+}
