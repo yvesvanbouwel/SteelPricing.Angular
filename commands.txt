@@ -1,4 +1,19 @@
+
+NPM
+===
 npm view <module_name> versions -> View all available versions of certain module
 npm view <module_name> version  -> Latest available version of certain module
 
+Bower
+=====
 bower install -> install all packages defined in the bower.json file.
+
+Grunt
+=====
+npm install -g grunt-cli => install the Grunt commandline interface.
+npm init => installs a basic package.js file.
+npm install <module> --save-dev => install <module> locally, but it will automatically be added to the devDependencies section, using a tilde version range.
+
+package.json:
+	~version "Approximately equivalent to version" See semver
+	^version "Compatible with version" See semver

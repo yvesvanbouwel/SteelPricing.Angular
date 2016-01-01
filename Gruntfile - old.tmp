@@ -1,0 +1,125 @@
+(function(){
+	module.exports = function(grunt){
+		var userConfig = require('./build.config.js');
+		
+		var taskConfig = {
+			pkg: grunt.file.readJSON('package.json'),
+			clean: {
+				options: {
+        			'no-write': true
+    			},
+				build: [
+					userConfig.build_dir + '/**', 
+					userConfig.build_dir,
+					userConfig.compile_dir + '/**']
+			},
+			copy:{
+				build: {
+					files: [
+						{
+							expand: true,
+							src: userConfig.vendor_files.js,
+							dest: userConfig.build_dir + '/js/vendor/',
+							flatten: true
+						},
+						{
+							expand: true,
+							src: userConfig.vendor_files.css,
+							dest: userConfig.build_dir + '/assets/css/',
+							flatten: true
+						},
+						{
+							expand: true,
+							src: userConfig.app_files.js,
+							dest: userConfig.build_dir + '/js/',
+							flatten: true
+						},
+						{
+							expand: true,
+							src: userConfig.app_files.css,
+							dest: userConfig.build_dir + '/assets/css/',
+							flatten: true
+						},
+						{
+							expand: true,
+							src: userConfig.app_files.html,
+							dest: userConfig.build_dir,
+							cwd: 'src/'
+						},
+						{
+							expand: true,
+							src: userConfig.app_files.data,
+							dest: userConfig.build_dir + '/data/',
+							flatten: true
+						}
+					]		
+				}
+			},
+			index: {
+				build: {
+					dir: userConfig.build_dir,
+					src: [
+						userConfig.vendor_files.js,
+						userConfig.vendor_files.css,
+						userConfig.build_dir + '/**/*.js',
+						userConfig.build_dir + '/*.js',
+						userConfig.build_dir + '/assets/**/*.css'
+					]
+				}
+			}
+		};
+		
+		grunt.registerMultiTask( 'index', 'Process index.html template', function () {
+			var dirRE = new RegExp( '^(' + userConfig.build_dir + '|' + userConfig.compile_dir + ')\/', 'g' );
+			var jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
+				return file.replace( dirRE, '' );
+			});
+			var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
+				return file.replace( dirRE, '' );
+			});
+			
+			grunt.file.copy('src/index.html', this.data.dir + '/index.html', { 
+				process: function ( contents, path ) {
+					return grunt.template.process( contents, {
+						data: {
+							scripts: jsFiles,
+							styles: cssFiles,
+							version: grunt.config( 'pkg.version' )
+						}
+					});
+				}
+			});
+		});
+			
+		/**
+		* A utility function to get all app JavaScript sources.
+		*/
+		function filterForJS ( files ) {
+			return files.filter( function ( file ) {
+				return file.match( /\.js$/ );
+			});
+		}
+	
+		/**
+		* A utility function to get all app CSS sources.
+		*/
+		function filterForCSS ( files ) {
+			return files.filter( function ( file ) {
+				return file.match( /\.css$/ );
+			});
+		}
+		
+		grunt.initConfig(taskConfig);
+		
+		grunt.loadNpmTasks('grunt-contrib-clean');
+		grunt.loadNpmTasks('grunt-contrib-copy');
+		
+		grunt.registerTask('default', ['clean', 'copy', 'index']);
+}})();
+
+
+/*
+	/ => app sources
+	/vendor => vendor sources
+	/assets/css => css files
+*/

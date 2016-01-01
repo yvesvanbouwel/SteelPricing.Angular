@@ -6,7 +6,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/src'));
+app.use(express.static(__dirname + '/build'));
 
 var port = 1001
 app.listen(port, function(){

@@ -5,7 +5,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    
+    <!--<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/MegaCorp.css" />
     <link rel="stylesheet" href="assets/css/SteelPricing.css" />
 
@@ -20,7 +26,7 @@
     <script type="text/javascript" src="app/common/countryTree/tree.js"></script>
     <script type="text/javascript" src="app/pricing/index.js"></script>
     <script type="text/javascript" src="app/pricing/filter/filter.js"></script>
-    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>-->
   </head>
   <body>
     <div class="navbar" role="navigation">
